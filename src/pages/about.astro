@@ -1,0 +1,89 @@
+---
+import FormattedDate from "../components/FormattedDate.astro";
+import Layout from "../layouts/BlogPost.astro";
+---
+
+<Layout
+  title="About Me"
+  description="A short into about me"
+  published_at={new Date("March 24 2024")}
+  cover_image="/blog-placeholder-about.jpg"
+  tags={["aboutme"]}
+  published={true}
+  updated_at={undefined}
+  read_time={2}
+  author={["kuldeep_singh"]}
+>
+  <p>Hi +_+</p>
+
+  <p>
+    I am Kuldeep Singh a coder, tech enthusiast, a blog writer(this is in
+    progress). I have been coding since 2016 started with writing small program
+    in C now I do all kind of stuff from web development to cloud computing, as well as troubleshooting smartphone and laptop issues for others.
+	I have a lot of unfinished projects and some completed projects.
+  </p>
+
+  <p><q>The best way to learn things is by doing it.</q> - by my mind</p>
+
+
+  <p>
+    Below is the list of technology & language i have worked with. This is Real
+    tech I have worked with.
+  </p>
+  <h4>Programming & Markup Languages</h4>
+  <ul>
+    <li>Python</li>
+    <li>C/C++</li>
+    <li>JavaScript</li>
+    <li>PHP</li>
+    <li>Zig</li>
+    <li>SQL</li>
+	<li>MD, HTML</li>
+	<li>CSS</li>
+	<li>Rust (coming soon)</li>
+	<li>Go (coming soon)</li>
+  </ul>
+  <h4>Library & Frameworks</h4>
+  <ul>
+    <li>Flask, Django</li>
+    <li>
+      OpenGL, SFML, Vulkan (from my hobby of making games and understanding physics)
+    </li>
+    <li>React, NextJS, ExpressJS, NodeJS, tailwind, prisma, NextAuth</li>
+    <li>Laravel</li>
+	<li>ROR (tried little bit)</li>
+  </ul>
+  <h4>Databases & Cloud Technologies</h4>
+  <ul>
+    <li>
+      MongoDB(I have worked with, optimizing its MongoDB's aggregation query & indexing things & reducing responce time of data)
+    </li>
+    <li>MySQL (used it alot with php & laravel)</li>
+    <li>
+      Postgres (used it on on some side projects not that much in touch with it)
+    </li>
+	<li>Redis (coming soon)</li>
+    <li>AWS Lambda, Elastic Beanstalk, IAM, S3, EC2, Amplify, ACM, VPC, Routing (a little confused in the VPC area)</li>
+	<li>Azure Blob storage (used in a college project)</li>
+	<li>Google Map's API (used it as part of project in my first company)<li>
+  </ul>
+  <h4>Applications</h4>
+  <ul>
+    <li>Git</li>
+	<li>Postman</li>
+    <li>Vscode & Visual Studio both</li>
+    <li>Figma (not that good at UI design)</li>
+    <li>Davinci Resolve (did some video editing)</li>
+    <li>Blender (created donut's and models for games).</li>
+  </ul>
+
+
+  <p> I know I still have a lot to learn, but I am improving. I also understand that tech does not matter that much
+	new tech will come & old tech will also stay so you have to make balance between them. In the end, developing innovative solutions and meeting user needs are what matter.
+  </p>
+  <p>By the way, I am a tech enthusiast, so experimenting and researching have become hobbies of mine</p>
+  <p>
+	If you have read this far, I want to let you know that I am currently becoming unemployed as my current project violates my work ethics. If anyone is interested
+	mail at <a href="mailto:kuldeepdev@gmail.com">kuldeepdev407@gmail.com</a>. Also i am available for freelance work 🙂;
+  </p>
+</Layout>
