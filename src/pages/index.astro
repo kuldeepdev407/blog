@@ -7,7 +7,7 @@ import { getCollection } from "astro:content";
 import FormattedDate from "../components/FormattedDate.astro";
 const posts = (await getCollection("blog"))
   .filter((value) => value.data.published)
-  .sort((a, b)=> b.data.published_at.valueOf() - a.data.published_at.valueOf())
+  .sort((a, b) => b.data.published_at.valueOf() - a.data.published_at.valueOf())
   .slice(0, 10);
 
 const author = await getCollection("author");
@@ -18,21 +18,22 @@ const author = await getCollection("author");
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
     <style>
-      ul {
+      .posts {
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
-        gap: 2rem;
+        gap: 1rem;
         list-style-type: none;
         margin: 0;
         padding: 0;
+        margin-top:1rem
       }
 
-      ul li * {
+      .posts li * {
         text-decoration: none;
         transition: 0.2s ease;
       }
-      ul li a {
+      .posts li a {
         display: block;
       }
       .title {
@@ -44,27 +45,23 @@ const author = await getCollection("author");
         margin: 0;
         color: rgb(var(--gray));
       }
-      ul li a:hover h4,
-      ul li a:hover .date {
+      .description{
+        margin: 0;
+        color: rgb(var(--gray));
+      }
+      .posts li a:hover h5,
+      .posts li a:hover .date {
         color: rgb(var(--accent));
       }
-      ul a:hover img {
-        box-shadow: var(--box-shadow);
-      }
       @media (max-width: 720px) {
-        ul {
+        .posts {
           gap: 0.5em;
         }
-        ul li {
+        .posts li {
           width: 100%;
           /* text-align: center; */
         }
-        ul li:first-child {
-          margin-bottom: 0;
-        }
-        ul li:first-child .title {
-          font-size: 1.563em;
-        }
+        
       }
     </style></head
   >
@@ -74,17 +71,32 @@ const author = await getCollection("author");
     <main>
       <center><h1>+_+</h1></center>
       <p>
-        Hi Kuldeep here this is my blog site. Here i write about all
-        the thinks from my life to my career. This website can contain some post
-        where i am just representing my opinion on things.
+        Hi Kuldeep here this is my blog site. Here i write about all the thinks
+        from my life to my career. This website can contain some post where i am
+        just representing my opinion on things.
+      </p>
+      <p>
+        My post are also availble at:
+        <ul>
+          <li>
+            For long story:- <a href="https://medium.com/@kuldeepdev407"
+              >medium.com</a
+            >
+          </li>
+          <li>
+            For more technical & short post:- <a
+              href="https://dev.to/kuldeepdev407">dev.to</a
+            >
+          </li>
+        </ul>
       </p>
       <h2>Recent Post's</h2>
-      <ul>
+      <ul class="posts">
         {
           posts.map((post) => (
             <li>
               <a href={`/blog/${post.slug}/`}>
-                <h4 class="title">{post.data.title}</h4>
+                <h5 class="title">{post.data.title}</h5>
                 <p class="date">
                   <FormattedDate date={post.data.published_at} /> -{" "}
                   {post.data.author.map((value) => {
