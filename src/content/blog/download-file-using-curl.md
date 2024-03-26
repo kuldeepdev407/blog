@@ -23,7 +23,7 @@ also if it is zip file that you are downloading, You can use below `tar` command
 tar -xf archive.tar
 ```
 
-download & extarct with same command
+download & extract with same command
 
 ```bash
 curl -L <downloadfileurl> | tar zx
