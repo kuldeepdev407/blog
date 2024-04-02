@@ -4,6 +4,6 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://blog.kuldeepdev407.com',
+	site: 'https://www.kuldeepdev407.com',
 	integrations: [mdx(), sitemap()],
 });
