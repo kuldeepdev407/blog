@@ -9,8 +9,6 @@ const posts = (await getCollection("blog"))
   .filter((value) => value.data.published)
   .sort((a, b) => b.data.published_at.valueOf() - a.data.published_at.valueOf())
   .slice(0, 10);
-
-const author = await getCollection("author");
 ---
 
 <!doctype html>
@@ -26,18 +24,20 @@ const author = await getCollection("author");
         list-style-type: none;
         margin: 0;
         padding: 0;
-        margin-top:1rem
+        margin-top: 1rem;
       }
 
       .posts li * {
-        text-decoration: none;
+        /* text-decoration: ; */
         transition: 0.2s ease;
       }
       .posts li a {
+        text-decoration: none;
         display: block;
       }
       .title {
         margin: 0;
+        text-decoration: underline;
         color: rgb(var(--black));
         line-height: 1;
       }
@@ -45,7 +45,11 @@ const author = await getCollection("author");
         margin: 0;
         color: rgb(var(--gray));
       }
-      .description{
+
+      .date * {
+        text-decoration: none;
+      }
+      .description {
         margin: 0;
         color: rgb(var(--gray));
       }
@@ -61,58 +65,81 @@ const author = await getCollection("author");
           width: 100%;
           /* text-align: center; */
         }
-        
       }
-    </style></head
-  >
+
+      .notification-badge {
+        background-color: #e95a5a;
+        border-radius: 10px;
+        padding: 10px 10px;
+        width: fit-content;
+        margin-left: auto;
+        text-decoration: none;
+        margin-right: auto;
+        color: white;
+      }
+    </style>
+  </head>
 
   <body>
     <Header />
     <main>
-      <center><h1>+_+</h1></center>
+      <center>
+        <a href="https://www.kuldeepdev407.com" style={"text-decoration:none;"}>
+          <h1>+_+</h1>
+        </a>
+      </center>
       <p>
-        Hi Kuldeep here this is my blog site. Here i write about all the thinks
-        from my life to my career. This website can contain some post where i am
-        just representing my opinion on things.
+        Hi Kuldeep here this is my personal site. Fuck i don't know what i am
+        going to build but i have to build things so here we go life. I am
+        currently aming for >= 60k INR a month salary job. Yeah for someone with
+        not good english you would say its not possible but i am going all in
+        either do or die. I know i have skill & quality to do projects. Sometime
+        i can be less confident but life fun with up's and down's. I am in my
+        20s and i am learning & building stuff. I need to build things like
+        robotics and hardware that need money so i am going to build them anyhow
+        by doing any work. I have been programming since 2016 and started my
+        tech career from 2023. I have done things from hardware to sofware & i
+        am really intrested in researching about things.
+        <a href="/about">Read more about me</a>
       </p>
-      <p>
-        My post are also availble at:
-        <ul>
-          <li>
-            For long story:- <a href="https://medium.com/@kuldeepdev407"
-              >medium.com</a
-            >
-          </li>
-          <li>
-            For more technical & short post:- <a
-              href="https://dev.to/kuldeepdev407">dev.to</a
-            >
-          </li>
-        </ul>
-      </p>
+      <a href="mailto:kuldeepdev407@gmail.com" style="text-decoration: none;"
+        ><div class="notification-badge">💼 Available for Work & Hire!</div></a
+      >
+      <p>I stared blogging from 2024. Check out my recent posts.</p>
       <h2>Recent Post's</h2>
       <ul class="posts">
         {
           posts.map((post) => (
             <li>
               <a href={`/blog/${post.slug}/`}>
-                <h5 class="title">{post.data.title}</h5>
+                <h3 class="title">{post.data.title}</h3>
                 <p class="date">
-                  <FormattedDate date={post.data.published_at} /> -{" "}
-                  {post.data.author.map((value) => {
-                    for (let i = 0; i < author.length; i++) {
-                      if (author[i].id == value) {
-                        return author[i].data.name;
-                      }
-                    }
-                    return "";
-                  })}
+                  <FormattedDate date={post.data.published_at} />
                 </p>
               </a>
             </li>
           ))
         }
       </ul>
+      <div>
+        <a href="/blogs">Read More</a>
+      </div>
+
+      <p>
+        My post are also availble at:
+        <ul>
+          <li>
+            <a href="https://medium.com/@kuldeepdev407"
+              >medium.com(long story)</a
+            >
+          </li>
+          <li>
+            <a href="https://dev.to/kuldeepdev407"
+              >dev.to(For more technical & short post)</a
+            >
+          </li>
+        </ul>
+      </p>
     </main>
     <Footer />
   </body>
