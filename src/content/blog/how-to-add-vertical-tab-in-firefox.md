@@ -3,8 +3,7 @@ title: 'How to add vertical tab in firefox'
 description: 'A short guide to add Vertical tab in Firefox'
 published: true
 published_at: '2024-03-25 10:23 +0000'
-author:
-  - kuldeep_singh
+author: "Kuldeep Singh"
 tags:
   - firefox
 cover_image: 'https://images.unsplash.com/photo-1668854040739-c5958f25f8f8?crop=entropy&cs=tinysrgb&fit=max&fm=webp&q=80&w=1080'

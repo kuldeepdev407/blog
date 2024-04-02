@@ -9,8 +9,7 @@ published_at: '2024-03-26 20:23 +0000'
 updated_at: '2024-03-26 20:23 +0000'
 #in min
 read_time: 2 
-author: 
-  - kuldeep_singh
+author: "Kuldeep Singh"
 ---
 Sometime i need to use `curl` to download things from web as a developer here is a quick command if you forget it.
 

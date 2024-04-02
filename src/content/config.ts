@@ -11,17 +11,9 @@ const blog = defineCollection({
 		cover_image: z.string().optional(),
 		tags: z.array(z.string()),
 		published: z.boolean(),
-		author: z.array(z.string()),
+		author: z.string(),
 		read_time: z.number().optional()
 	}),
 });
 
-const author = defineCollection({
-	type:"data",
-	schema: z.object({
-		name: z.string(),
-		short_desc:z.string(),
-		profile_img: z.string().optional()
-	})
-})
-export const collections = { blog, author };
+export const collections = { blog};

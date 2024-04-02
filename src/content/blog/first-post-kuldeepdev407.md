@@ -9,8 +9,7 @@ published_at: '2024-03-24 09:23 +0000'
 updated_at: '2024-03-24 09:23 +0000'
 #in min
 read_time: 2 
-author: 
-  - kuldeep_singh
+author: "Kuldeep Singh"
 ---
 
 This is the first blogs post on personal site. I just copyied the astro blog template.
