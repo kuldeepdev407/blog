@@ -1,9 +1,10 @@
 ---
 title: 'What is JSON'
+description: 'Just a JSON tutorial'
 published: true
-description: 'Basics story of JSON'
 tags: 
   - json
+  - basic
 published_at: '2024-04-28 20:23 +0000'
 updated_at: '2024-04-28 20:23 +0000'
 #in min

@@ -11,8 +11,7 @@ export async function GET(context) {
 		items: posts.map((post) => ({
 			title: post.data.title,
 			description: post.data.description,
-			author:'Kuldeep Singh',
-			content: post.render(),
+			author:post.data.author,
 			pubDate: post.data.published_at,
 			link: `/blog/${post.slug}/`,
 		})),
