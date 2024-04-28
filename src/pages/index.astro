@@ -8,7 +8,7 @@ import FormattedDate from "../components/FormattedDate.astro";
 const posts = (await getCollection("blog"))
   .filter((value) => value.data.published)
   .sort((a, b) => b.data.published_at.valueOf() - a.data.published_at.valueOf())
-  .slice(0, 10);
+  .slice(0, 5);
 ---
 
 <!doctype html>
@@ -21,14 +21,13 @@ const posts = (await getCollection("blog"))
         flex-direction: column;
         flex-wrap: wrap;
         gap: 1rem;
-        list-style-type: none;
-        margin: 0;
+        list-style-type: disc;
         padding: 0;
         margin-top: 1rem;
       }
 
-      .posts li * {
-        /* text-decoration: ; */
+      .posts li *:hover {
+        text-decoration: underline;
         transition: 0.2s ease;
       }
       .posts li a {
@@ -37,7 +36,7 @@ const posts = (await getCollection("blog"))
       }
       .title {
         margin: 0;
-        text-decoration: underline;
+        font-weight: bold;
         color: rgb(var(--black));
         line-height: 1;
       }
@@ -60,6 +59,7 @@ const posts = (await getCollection("blog"))
       @media (max-width: 720px) {
         .posts {
           gap: 0.5em;
+          padding:1rem;
         }
         .posts li {
           width: 100%;
@@ -83,46 +83,30 @@ const posts = (await getCollection("blog"))
   <body>
     <Header />
     <main>
-      <center>
-        <a href="https://www.kuldeepdev407.com" style={"text-decoration:none;"}>
-          <h1>+_+</h1>
-        </a>
-      </center>
       <p>
-        Hi Kuldeep here this is my personal site. Fuck i don't know what i am
-        going to build but i have to build things so here we go life. I am
-        currently aming for >= 60k INR a month salary job. Yeah for someone with
-        not good english you would say its not possible but i am going all in
-        either do or die. I know i have skill & quality to do projects. Sometime
-        i can be less confident but life fun with up's and down's. I am in my
-        20s and i am learning & building stuff. I need to build things like
-        robotics and hardware that need money so i am going to build them anyhow
-        by doing any work. I have been programming since 2016 and started my
-        tech career from 2023. I have done things from hardware to sofware & i
-        am really intrested in researching about things.
-        <a href="/about">Read more about me</a>
+        Hi 👋 Kuldeep here this is my personal page. Feel Free to read some of
+        my blog post’s. I have been coding & learning about computer’s since
+        2017 as a hobby. I have done lot’s to things with lot of technology. I
+        have nothing much to show till yet but i have done lot of work for
+        startup's and friends . I will not bore you with my talk to much if you
+        want to read more about me
+        <a href="/about">click here</a>
       </p>
-      <a href="mailto:kuldeepdev407@gmail.com" style="text-decoration: none;"
-        ><div class="notification-badge">💼 Available for Work & Hire!</div></a
-      >
-      <p>I stared blogging from 2024. Check out my recent posts.</p>
+
       <h2>Recent Post's</h2>
       <ul class="posts">
         {
           posts.map((post) => (
             <li>
               <a href={`/blog/${post.slug}/`}>
-                <h3 class="title">{post.data.title}</h3>
-                <p class="date">
-                  <FormattedDate date={post.data.published_at} />
-                </p>
+                <p class="title">{post.data.title}</p>
               </a>
             </li>
           ))
         }
       </ul>
       <div>
-        <a href="/blogs">Read More</a>
+        <a href="/blogs">Show More</a>
       </div>
 
       <p>
