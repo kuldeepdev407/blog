@@ -128,6 +128,49 @@ input {
 }
 table {
 	width: 100%;
+	border-collapse: collapse;
+	margin-bottom: 1.25rem;
+	/* allow horizontal scroll on small screens */
+	display: block;
+	overflow: auto;
+}
+
+/* Content-specific table styling */
+.prose table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-bottom: 1.25rem;
+}
+
+.prose th,
+.prose td {
+	border: 1px solid rgb(var(--gray-light));
+	padding: 0.6rem 0.8rem;
+	text-align: left;
+	vertical-align: middle;
+}
+
+.prose thead th {
+	background: rgb(var(--gray-light));
+	font-weight: 700;
+	color: rgb(var(--black));
+}
+
+.prose tbody tr:nth-child(even) td {
+	background: rgba(var(--gray-light), 0.5);
+}
+
+.prose caption {
+	caption-side: bottom;
+	padding-top: 0.5rem;
+	color: rgb(var(--gray));
+	font-size: 0.9em;
+}
+
+.prose td pre {
+	margin: 0;
+	overflow: auto;
+	max-width: 100%;
 }
 img {
 	max-width: 100%;
