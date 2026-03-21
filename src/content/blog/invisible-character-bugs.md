@@ -12,11 +12,11 @@ read_time: 2
 author: Kuldeep Singh
 ---
 
-This week I ran into a surprisingly interesting bug while working on a feature that generates diffs for history changes in comments, decription.
+This week I ran into a surprisingly interesting bug while working on a feature that generates diffs for history changes in comments, description.
 
 ### The Setup
 
-We have a system that tracks history changes in backend. Whenever there’s a modification, we generate a diff and send both the old and new values to the frontend. The initial content follows a simple template:
+We have a system that tracks history changes in back-end. Whenever there’s a modification, we generate a diff and send both the old and new values to the front-end. The initial content follows a simple template:
 
 ```
 Task {id}: Working on abc\n
@@ -29,13 +29,13 @@ If anything changes, the diff should reflect it clearly.
 
 While testing, I noticed something odd.
 
-Even when no changes were made—just clicking the **Save** button for first time in FE —the system still generated a diff. The frontend showed differences between the "old" and "new" values, even though the text looked identical.
+Even when no changes were made—just clicking the **Save** button for first time in FE —the system still generated a diff. The front-end showed differences between the "old" and "new" values, even though the text looked identical.
 
 At first, I checked the strings using console logs. Everything appeared normal. No visible differences.
 
 After spending some time debugging, I copied the API response and inspected it more closely. That’s when I noticed the issue:
 
-- The old version used `\n` (LF – Line Feed) - system generate initialy
+- The old version used `\n` (LF – Line Feed) - system generate initially
 - The new version used `\r\n` (CRLF – Carriage Return + Line Feed) - user update other things once from FE
 
 So even though the text looked the same, the underlying newline characters were different—causing the diff algorithm to treat them as changes.
@@ -44,7 +44,7 @@ So even though the text looked the same, the underlying newline characters were 
 
 The culprit turned out to be the browser.
 
-When using a `<textarea>` in the frontend, browsers normalize line endings to `\r\n` as part of the HTML specification. So even if the user doesn’t modify anything and simply clicks save, the value retrieved from the textarea contains `\r\n` line endings.
+When using a `<textarea>` in the front-end, browsers normalize line endings to `\r\n` as part of the HTML specification. So even if the user doesn’t modify anything and simply clicks save, the value retrieved from the textarea contains `\r\n` line endings.
 
 This behavior is expected and standardized across browsers.
 
@@ -70,6 +70,6 @@ We eventually had to scan the entire database table to identify and clean such e
 
 This bug was a great reminder that:
 - Invisible characters can cause very visible issues
-- Browsers follow standards that may not always align with backend assumptions
+- Browsers follow standards that may not always align with back-end assumptions
 - Normalizing input data is crucial when doing string comparisons
-- Watchout for unicodes 😁
+- Watch-out for Unicode 😁
