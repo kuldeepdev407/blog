@@ -10,6 +10,7 @@ published_at: 2026-11-03 06:00 +0000
 updated_at: 2026-11-03 06:00 +0000
 read_time: 3
 author: Kuldeep Singh
+cover_image: '/images/postgres-row-level-lock-cover.jpg'
 ---
 Recently when i was using Claude to build thinks at my work and reading the project i came across code where it was writing query with `SELECT .. FOR KEY SHARE`, `FOR UPDATE`. So as a developer i just explored this topic more and found that this is a concept called Row level Locks that are available in Postgres. So i will be sharing this with you today.
 
