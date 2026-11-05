@@ -6,4 +6,6 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
 	site: 'https://www.kuldeepdev407.com',
 	integrations: [mdx(), sitemap()],
+	// Keep Astro 4's whitespace handling so rendered pages don't change.
+	compressHTML: true,
 });

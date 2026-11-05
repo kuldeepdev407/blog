@@ -93,7 +93,7 @@ const posts = (await getCollection("blog"))
         {
           posts.map((post) => (
             <li>
-              <a href={`/blog/${post.slug}/`}>
+              <a href={`/blog/${post.id}/`}>
                 <p class="title">{post.data.title}</p>
               </a>
             </li>
