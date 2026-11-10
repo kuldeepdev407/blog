@@ -2,16 +2,52 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
 import '../styles/global.css';
+import { AUTHOR, SITE_TITLE } from '../consts';
 
 interface Props {
 	title: string;
 	description: string;
 	image?: string;
+	article?: {
+		published_at: Date;
+		updated_at?: Date;
+	};
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = '/kuldeep-singh.jpg' } = Astro.props;
+const { title, description, image = '/kuldeep-singh.jpg', article } = Astro.props;
+
+// Put the name in every page's <title> so each page reinforces "Kuldeep Singh".
+const pageTitle = title.includes(SITE_TITLE) ? title : `${title} | ${SITE_TITLE}`;
+
+const siteURL = new URL('/', Astro.site).href;
+const person = {
+	'@type': 'Person',
+	'@id': `${siteURL}#person`,
+	name: AUTHOR.name,
+	alternateName: AUTHOR.alternateName,
+	jobTitle: AUTHOR.jobTitle,
+	url: siteURL,
+	image: new URL(AUTHOR.image, Astro.site).href,
+	sameAs: AUTHOR.sameAs,
+};
+
+const jsonLd = article
+	? {
+			'@context': 'https://schema.org',
+			'@type': 'BlogPosting',
+			headline: title,
+			description,
+			image: new URL(image, Astro.site).href,
+			url: canonicalURL.href,
+			mainEntityOfPage: canonicalURL.href,
+			datePublished: article.published_at.toISOString(),
+			dateModified: (article.updated_at ?? article.published_at).toISOString(),
+			author: person,
+			publisher: { '@id': `${siteURL}#person` },
+		}
+	: { '@context': 'https://schema.org', ...person };
 ---
 
 <!-- Global Metadata -->
@@ -49,12 +85,17 @@ const { title, description, image = '/kuldeep-singh.jpg' } = Astro.props;
 <link rel="canonical" href={canonicalURL} />
 
 <!-- Primary Meta Tags -->
-<title>{title}</title>
-<meta name="title" content={title} />
+<title>{pageTitle}</title>
+<meta name="title" content={pageTitle} />
 <meta name="description" content={description} />
+<meta name="author" content={AUTHOR.name} />
+
+<!-- Structured data -->
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
 <!-- Open Graph / Facebook -->
-<meta property="og:type" content="website" />
+<meta property="og:type" content={article ? 'article' : 'website'} />
+<meta property="og:site_name" content={SITE_TITLE} />
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
